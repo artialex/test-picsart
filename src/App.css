@@ -33,7 +33,7 @@ main.dropper {
   cursor: pointer;
 }
 .canvases {
-  /*position: relative;*/
+  position: relative;
 }
 
 canvas {

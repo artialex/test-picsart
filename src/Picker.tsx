@@ -1,7 +1,7 @@
-import { useCanvas } from "./use-canvas.ts";
-import { PIXEL_SIZE, PIXELS_AROUND } from "./App.tsx";
-import { useEffect } from "react";
-import { scaleImageData } from "./utils.ts";
+import { useCanvas } from './use-canvas.ts';
+import { PIXEL_SIZE, PIXELS_AROUND } from './App.tsx';
+import { useEffect } from 'react';
+import { scaleImageData } from './utils.ts';
 
 interface PickerProps {
   ctx: CanvasRenderingContext2D;
@@ -13,27 +13,22 @@ interface PickerProps {
   };
 }
 
-export const Picker = ({
-  ctx,
-  size,
-  position,
-  currentColor = "lightgray",
-}: PickerProps) => {
+export const Picker = ({ ctx, size, position, currentColor = 'lightgray' }: PickerProps) => {
   const picker = useCanvas(() => {});
 
   useEffect(() => {
     if (!ctx || !picker.ctx) return;
 
-    const imageData = ctx.getImageData(
-      position.x - PIXELS_AROUND,
-      position.y - PIXELS_AROUND,
-      PIXELS_AROUND * 2 + 1,
-      PIXELS_AROUND * 2 + 1
-    );
-
-    const scaled = scaleImageData(picker.ctx, imageData, PIXEL_SIZE);
-
-    picker.ctx.putImageData(scaled, 0, 0);
+    // const imageData = ctx.getImageData(
+    //   position.x - PIXELS_AROUND,
+    //   position.y - PIXELS_AROUND,
+    //   PIXELS_AROUND * 2 + 1,
+    //   PIXELS_AROUND * 2 + 1,
+    // );
+    //
+    // const scaled = scaleImageData(picker.ctx, imageData, PIXEL_SIZE);
+    //
+    // picker.ctx.putImageData(scaled, 0, 0);
   }, [position, picker]);
 
   return (
@@ -49,12 +44,7 @@ export const Picker = ({
           )`,
       }}
     >
-      <canvas
-        className="picker-canvas"
-        ref={picker.ref}
-        width={size}
-        height={size}
-      />
+      <canvas className="picker-canvas" ref={picker.ref} width={size} height={size} />
       <div
         className="picker-grid"
         style={{
