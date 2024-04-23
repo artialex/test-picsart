@@ -1,14 +1,13 @@
 import "./App.css";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { loadImage, rgbToHex, scaleImageData } from "./utils.ts";
+import React, { useMemo, useState } from "react";
+import { loadImage, rgbToHex } from "./utils.ts";
 import { useCanvas } from "./use-canvas.ts";
 import { Picker } from "./Picker.tsx";
-import throttle from "lodash.throttle";
 
 // const EXAMPLE_IMAGE =
 //   "1920x1080-4598441-beach-water-pier-tropical-sky-sea-clouds-island-palm-trees.jpg";
 
-const EXAMPLE_IMAGE = "florian-wehde-1uWanmgkd5g-unsplash.jpg";
+const EXAMPLE_IMAGE = "4000x4000.jpg";
 
 const SAFE_ZONE = 5;
 export const PIXEL_SIZE = 12;
@@ -30,7 +29,7 @@ export default function App() {
       });
     },
     {
-      willReadFrequently: true,
+      willReadFrequently: false,
     }
   );
 
@@ -48,17 +47,13 @@ export default function App() {
     return main.ref.current.getBoundingClientRect();
   }, [main]);
 
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLCanvasElement>) => {
-      if (!rect) return;
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+  const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    if (!rect) return;
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-      console.log("App :: 57", x, y);
-      setPosition({ x, y });
-    },
-    [rect]
-  );
+    setPosition({ x, y });
+  };
 
   const handleClick = () => {
     setSelectedColor(currentColor || "lightgray");

@@ -3,11 +3,16 @@ main.none {
 }
 
 main.dropper {
-  cursor: url("public/IconColorPicker.svg"), crosshair;
+  cursor: url("IconColorPicker.svg"), crosshair;
 }
 
 .toolbar {
-  margin-bottom: 20px;
+  position: fixed;
+  z-index: 1000;
+  background: rgba(109, 122, 128, 0.5);
+  margin: 20px;
+  padding: 8px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,7 +33,7 @@ main.dropper {
   cursor: pointer;
 }
 .canvases {
-  position: relative;
+  /*position: relative;*/
 }
 
 canvas {
@@ -55,7 +60,6 @@ canvas:hover + .picker {
   outline: 4px solid white;
   border: 12px solid;
   box-sizing: content-box;
-  will-change: transform;
 }
 .picker-canvas {
   position: absolute;
@@ -84,7 +88,7 @@ canvas:hover + .picker {
   height: 11px;
   border: 1px solid black;
   outline: 1px solid white;
-  box-shadow: 0 0 2px white;
+  /*box-shadow: 0 0 2px white;*/
 }
 
 .picker-color {

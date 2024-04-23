@@ -1,9 +1,9 @@
-function componentToHex(c) {
+function componentToHex(c: number) {
   const hex = c.toString(16);
   return hex.length == 1 ? "0" + hex : hex;
 }
 
-export function rgbToHex(r, g, b) {
+export function rgbToHex(r: number, g: number, b: number) {
   return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
@@ -13,7 +13,11 @@ export async function loadImage(url: string) {
   return createImageBitmap(blob);
 }
 
-export function scaleImageData(ctx, imageData, scale) {
+export function scaleImageData(
+  ctx: CanvasRenderingContext2D,
+  imageData: ImageData,
+  scale: number
+) {
   const scaled = ctx.createImageData(
     imageData.width * scale,
     imageData.height * scale
@@ -22,7 +26,7 @@ export function scaleImageData(ctx, imageData, scale) {
   for (let row = 0; row < imageData.height; row++) {
     for (let col = 0; col < imageData.width; col++) {
       const sourcePixel = [
-        imageData.data[(row * imageData.width + col) * 4 + 0],
+        imageData.data[(row * imageData.width + col) * 4],
         imageData.data[(row * imageData.width + col) * 4 + 1],
         imageData.data[(row * imageData.width + col) * 4 + 2],
         imageData.data[(row * imageData.width + col) * 4 + 3],
