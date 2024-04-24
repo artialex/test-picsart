@@ -17,6 +17,9 @@ the two, at least for this task.
 Initially I used `.getImageData` method to get the pixel data of the image,
 but it seems to be too slow in Firefox, so I switched to a custom function
 
+`mousemove` events could probably be further optimized by throttling, 
+but it seems like modern browsers automatically throttle it to refresh rate
+
 I added some SAFE_ZONE around the image, so it's easier to pick the color at
 the edges of the image. It's a bit of a hack, and it should be made more
 elegant in a real app, but it works for this task.
