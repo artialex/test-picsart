@@ -1,0 +1,46 @@
+.circle {
+  z-index: 20;
+  border-radius: 50%;
+  overflow: hidden;
+  background: white;
+  display: inline-block;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  outline: 4px solid white;
+  border: 12px solid;
+  box-sizing: content-box;
+}
+.circle-canvas {
+  position: absolute;
+  inset: 0;
+  border: none;
+}
+.circle-grid {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+  background-image: linear-gradient(to right, #396b8c 0, transparent 1px),
+    linear-gradient(to bottom, #396b8c 0, transparent 1px);
+}
+
+.circle-grid::after {
+  content: '';
+  width: 11px;
+  height: 11px;
+  border: 1px solid black;
+  outline: 1px solid white;
+}
+
+.circle-color {
+  position: absolute;
+  background: gray;
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: white;
+  bottom: 25%;
+  width: 80px;
+  text-align: center;
+}

@@ -1,0 +1,11 @@
+main.dropper canvas {
+  cursor: none;
+}
+
+canvas + .circle {
+  display: none;
+}
+
+canvas:hover + .circle {
+  display: block;
+}

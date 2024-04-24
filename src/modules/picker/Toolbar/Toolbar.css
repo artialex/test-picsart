@@ -1,0 +1,53 @@
+.toolbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background: rgba(240, 255, 255, 0.2);
+  padding: 0 24px;
+  height: var(--app-toolbar-height);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid rgba(215, 227, 227, 0.8);
+}
+
+.toolbar-selected-color {
+  width: 100px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.toolbar-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  padding: 6px;
+  background: lightgray url('../../../../public/IconColorPicker.svg') no-repeat center;
+  border: none;
+  text-indent: -9999px;
+}
+
+.toolbar-tools {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.toolbar-examples {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.toolbar-example-btn {
+  padding: 4px;
+}
+
+.toolbar-btn.selected {
+  background-color: gray;
+}
+
+.toolbar-btn:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}

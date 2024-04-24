@@ -1,30 +1,32 @@
-# React + TypeScript + Vite
+# Test Assessment - Picsart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Task](test-task.pdf)
 
-Currently, two official plugins are available:
+## Some notes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I decided to use vanilla JS for the canvas, though in real life I would
+probably use a library like 'konva' or 'fabric.js' for this kind of tasks.
 
-## Expanding the ESLint configuration
+I used React.Context as a state management solution, in real app that might
+be replaced with Redux, MobX, etc.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+I used two canvases: one for the image and one for the picker. Probably,
+it could be done with one canvas, but I thought it would be easier to separate
+the two, at least for this task.
 
-- Configure the top-level `parserOptions` property like this:
+Initially I used `.getImageData` method to get the pixel data of the image,
+but it seems to be too slow in Firefox, so I switched to a custom function
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: '`module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+I added some SAFE_ZONE around the image, so it's easier to pick the color at
+the edges of the image. It's a bit of a hack, and it should be made more
+elegant in a real app, but it works for this task.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+It works pretty well in WebKit browsers, but it's a bit slow in Firefox with
+larger canvases. I haven't tested it in Safari as I don't have a Mac. Basic
+research showed that it might be optimized further with the usage of Offscreen
+Canvas, Web Workers and/or Web Assembly. But probably it's out of the scope
+of this task as it shows decent performance with 4000x4000 canvas.
+
+I wrote some test for two functions, but it's not a full coverage, just to show
+
+No mobile version as the task doesn't imply it.
