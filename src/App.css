@@ -14,4 +14,6 @@ main.dropper {
   margin-top: var(--app-toolbar-height);
   position: relative;
   height: calc(100% - var(--app-toolbar-height));
+  display: flex;
+  justify-content: center;
 }
