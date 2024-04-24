@@ -22,11 +22,11 @@ export function Toolbar({ tool, setTool, children }: ToolbarProps) {
         >
           Picker
         </button>
-        <div>{selectedColor || 'not selected'}</div>
         <div
           className="toolbar-selected-color"
           style={{ backgroundColor: selectedColor || 'lightgray' }}
         />
+        <div>{selectedColor || 'not selected'}</div>
       </div>
 
       <div className="toolbar-examples">{children}</div>
